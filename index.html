@@ -1,0 +1,57 @@
+<html>
+<head>
+<style>
+body{background-color:black;}
+.container{margin:auto;border:3px solid white;width:300px;height:100px;margin-top:200px;}
+.watch{color:white;font-size:40px;text-align:center;}
+button{font-size:20px;margin-left:24px;margin-top:10px;}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="watch">00:00:00</div>
+<button onclick="fun1()">start</button>
+<button onclick="fun3()">pause</button>
+<button onclick="fun2()">reset</button>
+</div>
+</body>
+<script>
+var seconds=00;
+var minutes=00;
+var hours=00;
+var interval;
+
+function fun1(){
+interval=setInterval(updatetime,1000);
+}
+function updatetime()
+{
+seconds++;
+if(seconds==60){
+seconds=0;
+minutes++;
+if(minutes==60)
+{
+minutes=0;
+hours++;
+}
+}
+displayTime()
+}
+function displayTime(){
+var watch=document.querySelector(".watch");
+watch.innerHTML = hours + ":" + minutes+ ":" + seconds;
+}
+function fun2() {
+
+  clearInterval(interval);
+  seconds = 00;
+  minutes = 00;
+  hours = 00;
+  displayTime();
+  }
+  function fun3(){
+    clearInterval(interval);
+  }
+</script>
+</html>
